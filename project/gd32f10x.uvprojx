@@ -553,6 +553,11 @@
               <FileType>1</FileType>
               <FilePath>..\User\w25q64.c</FilePath>
             </File>
+            <File>
+              <FileName>fmc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\fmc.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

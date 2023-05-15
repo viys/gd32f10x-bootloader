@@ -6,6 +6,9 @@ void spi0_init(void)
 	rcu_periph_clock_enable(RCU_SPI0);
 	rcu_periph_clock_enable(RCU_GPIOA);
 	
+	/* connect PA5 to SPI0_SCK */
+    /* connect PA6 to SPI0_MIS0 */
+	/* connect PA7 to SPI0_MOSI */
 	gpio_init(GPIOA,GPIO_MODE_AF_PP,GPIO_OSPEED_50MHZ,GPIO_PIN_5|GPIO_PIN_7);
 	gpio_init(GPIOA,GPIO_MODE_IN_FLOATING,GPIO_OSPEED_50MHZ,GPIO_PIN_6);
 	
@@ -32,16 +35,14 @@ uint8_t spi0_rw_byte(uint8_t txd)
 
 void spi0_write(uint8_t *wdata,uint16_t datalen)
 {
-	uint16_t i;
-	for(i=0; i<datalen; i++){
+	for(uint16_t i=0; i<datalen; i++){
 		spi0_rw_byte(wdata[i]);
 	}
 }
 
 void spi0_read(uint8_t *rdata,uint16_t datalen)
 {
-	uint16_t i;
-	for(i=0; i<datalen; i++){
+	for(uint16_t i=0; i<datalen; i++){
 		rdata[i] = spi0_rw_byte(0xff);
 	}
 }
